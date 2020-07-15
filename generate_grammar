@@ -1,0 +1,6 @@
+#!/bin/env fish
+
+java -jar /usr/local/lib/antlr-4.8-complete.jar src/grammars/omnilisp.g4 \
+      -o src/java/omnilisp/parsers/java  \
+      -package omnilisp.parsers.java \
+      -visitor -message-format gnu
