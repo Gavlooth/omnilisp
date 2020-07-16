@@ -17,16 +17,16 @@ public class omnilispParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, BOOLEAN=4, FLOAT=5, STRING=6, SYMBOL=7, TRASH=8, 
+		T__0=1, T__1=2, NIL=3, BOOLEAN=4, FLOAT=5, STRING=6, SYMBOL=7, TRASH=8, 
 		HEX=9, BIN=10, LONG=11, BIGN=12;
 	public static final int
-		RULE_file = 0, RULE_form = 1, RULE_forms = 2, RULE_list = 3, RULE_symbol = 4, 
-		RULE_nil = 5, RULE_literal = 6, RULE_string = 7, RULE_hex = 8, RULE_bin = 9, 
-		RULE_bign = 10, RULE_number = 11;
+		RULE_file = 0, RULE_form = 1, RULE_forms = 2, RULE_list = 3, RULE_literal = 4, 
+		RULE_string = 5, RULE_nil = 6, RULE_hex = 7, RULE_bin = 8, RULE_bign = 9, 
+		RULE_bool = 10, RULE_symbol = 11, RULE_number = 12;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"file", "form", "forms", "list", "symbol", "nil", "literal", "string", 
-			"hex", "bin", "bign", "number"
+			"file", "form", "forms", "list", "literal", "string", "nil", "hex", "bin", 
+			"bign", "bool", "symbol", "number"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -39,7 +39,7 @@ public class omnilispParser extends Parser {
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, "BOOLEAN", "FLOAT", "STRING", "SYMBOL", "TRASH", 
+			null, null, null, "NIL", "BOOLEAN", "FLOAT", "STRING", "SYMBOL", "TRASH", 
 			"HEX", "BIN", "LONG", "BIGN"
 		};
 	}
@@ -128,21 +128,21 @@ public class omnilispParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(27);
+			setState(29);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__2) | (1L << BOOLEAN) | (1L << FLOAT) | (1L << STRING) | (1L << SYMBOL) | (1L << HEX) | (1L << BIN) | (1L << LONG) | (1L << BIGN))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NIL) | (1L << BOOLEAN) | (1L << FLOAT) | (1L << STRING) | (1L << SYMBOL) | (1L << HEX) | (1L << BIN) | (1L << LONG) | (1L << BIGN))) != 0)) {
 				{
 				{
-				setState(24);
+				setState(26);
 				form();
 				}
 				}
-				setState(29);
+				setState(31);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(30);
+			setState(32);
 			match(EOF);
 			}
 		}
@@ -187,10 +187,10 @@ public class omnilispParser extends Parser {
 		FormContext _localctx = new FormContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_form);
 		try {
-			setState(34);
+			setState(36);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
-			case T__2:
+			case NIL:
 			case BOOLEAN:
 			case FLOAT:
 			case STRING:
@@ -201,14 +201,14 @@ public class omnilispParser extends Parser {
 			case BIGN:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(32);
+				setState(34);
 				literal();
 				}
 				break;
 			case T__0:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(33);
+				setState(35);
 				list();
 				}
 				break;
@@ -260,17 +260,17 @@ public class omnilispParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(39);
+			setState(41);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__2) | (1L << BOOLEAN) | (1L << FLOAT) | (1L << STRING) | (1L << SYMBOL) | (1L << HEX) | (1L << BIN) | (1L << LONG) | (1L << BIGN))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << NIL) | (1L << BOOLEAN) | (1L << FLOAT) | (1L << STRING) | (1L << SYMBOL) | (1L << HEX) | (1L << BIN) | (1L << LONG) | (1L << BIGN))) != 0)) {
 				{
 				{
-				setState(36);
+				setState(38);
 				form();
 				}
 				}
-				setState(41);
+				setState(43);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -316,95 +316,12 @@ public class omnilispParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(42);
-			match(T__0);
-			setState(43);
-			forms();
 			setState(44);
-			match(T__1);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class SymbolContext extends ParserRuleContext {
-		public TerminalNode SYMBOL() { return getToken(omnilispParser.SYMBOL, 0); }
-		public SymbolContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_symbol; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof omnilispListener ) ((omnilispListener)listener).enterSymbol(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof omnilispListener ) ((omnilispListener)listener).exitSymbol(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof omnilispVisitor ) return ((omnilispVisitor<? extends T>)visitor).visitSymbol(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final SymbolContext symbol() throws RecognitionException {
-		SymbolContext _localctx = new SymbolContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_symbol);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
+			match(T__0);
+			setState(45);
+			forms();
 			setState(46);
-			match(SYMBOL);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class NilContext extends ParserRuleContext {
-		public NilContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_nil; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof omnilispListener ) ((omnilispListener)listener).enterNil(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof omnilispListener ) ((omnilispListener)listener).exitNil(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof omnilispVisitor ) return ((omnilispVisitor<? extends T>)visitor).visitNil(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final NilContext nil() throws RecognitionException {
-		NilContext _localctx = new NilContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_nil);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(48);
-			match(T__2);
+			match(T__1);
 			}
 		}
 		catch (RecognitionException re) {
@@ -428,7 +345,9 @@ public class omnilispParser extends Parser {
 		public NilContext nil() {
 			return getRuleContext(NilContext.class,0);
 		}
-		public TerminalNode BOOLEAN() { return getToken(omnilispParser.BOOLEAN, 0); }
+		public BoolContext bool() {
+			return getRuleContext(BoolContext.class,0);
+		}
 		public SymbolContext symbol() {
 			return getRuleContext(SymbolContext.class,0);
 		}
@@ -453,15 +372,15 @@ public class omnilispParser extends Parser {
 
 	public final LiteralContext literal() throws RecognitionException {
 		LiteralContext _localctx = new LiteralContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_literal);
+		enterRule(_localctx, 8, RULE_literal);
 		try {
-			setState(55);
+			setState(53);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case STRING:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(50);
+				setState(48);
 				string();
 				}
 				break;
@@ -472,28 +391,28 @@ public class omnilispParser extends Parser {
 			case BIGN:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(51);
+				setState(49);
 				number();
 				}
 				break;
-			case T__2:
+			case NIL:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(52);
+				setState(50);
 				nil();
 				}
 				break;
 			case BOOLEAN:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(53);
-				match(BOOLEAN);
+				setState(51);
+				bool();
 				}
 				break;
 			case SYMBOL:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(54);
+				setState(52);
 				symbol();
 				}
 				break;
@@ -535,12 +454,54 @@ public class omnilispParser extends Parser {
 
 	public final StringContext string() throws RecognitionException {
 		StringContext _localctx = new StringContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_string);
+		enterRule(_localctx, 10, RULE_string);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(55);
+			match(STRING);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class NilContext extends ParserRuleContext {
+		public TerminalNode NIL() { return getToken(omnilispParser.NIL, 0); }
+		public NilContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_nil; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof omnilispListener ) ((omnilispListener)listener).enterNil(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof omnilispListener ) ((omnilispListener)listener).exitNil(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof omnilispVisitor ) return ((omnilispVisitor<? extends T>)visitor).visitNil(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final NilContext nil() throws RecognitionException {
+		NilContext _localctx = new NilContext(_ctx, getState());
+		enterRule(_localctx, 12, RULE_nil);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(57);
-			match(STRING);
+			match(NIL);
 			}
 		}
 		catch (RecognitionException re) {
@@ -577,7 +538,7 @@ public class omnilispParser extends Parser {
 
 	public final HexContext hex() throws RecognitionException {
 		HexContext _localctx = new HexContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_hex);
+		enterRule(_localctx, 14, RULE_hex);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -619,7 +580,7 @@ public class omnilispParser extends Parser {
 
 	public final BinContext bin() throws RecognitionException {
 		BinContext _localctx = new BinContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_bin);
+		enterRule(_localctx, 16, RULE_bin);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -661,12 +622,96 @@ public class omnilispParser extends Parser {
 
 	public final BignContext bign() throws RecognitionException {
 		BignContext _localctx = new BignContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_bign);
+		enterRule(_localctx, 18, RULE_bign);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(63);
 			match(BIGN);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class BoolContext extends ParserRuleContext {
+		public TerminalNode BOOLEAN() { return getToken(omnilispParser.BOOLEAN, 0); }
+		public BoolContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_bool; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof omnilispListener ) ((omnilispListener)listener).enterBool(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof omnilispListener ) ((omnilispListener)listener).exitBool(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof omnilispVisitor ) return ((omnilispVisitor<? extends T>)visitor).visitBool(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final BoolContext bool() throws RecognitionException {
+		BoolContext _localctx = new BoolContext(_ctx, getState());
+		enterRule(_localctx, 20, RULE_bool);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(65);
+			match(BOOLEAN);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class SymbolContext extends ParserRuleContext {
+		public TerminalNode SYMBOL() { return getToken(omnilispParser.SYMBOL, 0); }
+		public SymbolContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_symbol; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof omnilispListener ) ((omnilispListener)listener).enterSymbol(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof omnilispListener ) ((omnilispListener)listener).exitSymbol(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof omnilispVisitor ) return ((omnilispVisitor<? extends T>)visitor).visitSymbol(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final SymbolContext symbol() throws RecognitionException {
+		SymbolContext _localctx = new SymbolContext(_ctx, getState());
+		enterRule(_localctx, 22, RULE_symbol);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(67);
+			match(SYMBOL);
 			}
 		}
 		catch (RecognitionException re) {
@@ -713,43 +758,43 @@ public class omnilispParser extends Parser {
 
 	public final NumberContext number() throws RecognitionException {
 		NumberContext _localctx = new NumberContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_number);
+		enterRule(_localctx, 24, RULE_number);
 		try {
-			setState(70);
+			setState(74);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case FLOAT:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(65);
+				setState(69);
 				match(FLOAT);
 				}
 				break;
 			case HEX:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(66);
+				setState(70);
 				hex();
 				}
 				break;
 			case BIN:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(67);
+				setState(71);
 				bin();
 				}
 				break;
 			case BIGN:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(68);
+				setState(72);
 				bign();
 				}
 				break;
 			case LONG:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(69);
+				setState(73);
 				match(LONG);
 				}
 				break;
@@ -769,24 +814,25 @@ public class omnilispParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\16K\4\2\t\2\4\3\t"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\16O\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4"+
-		"\f\t\f\4\r\t\r\3\2\7\2\34\n\2\f\2\16\2\37\13\2\3\2\3\2\3\3\3\3\5\3%\n"+
-		"\3\3\4\7\4(\n\4\f\4\16\4+\13\4\3\5\3\5\3\5\3\5\3\6\3\6\3\7\3\7\3\b\3\b"+
-		"\3\b\3\b\3\b\5\b:\n\b\3\t\3\t\3\n\3\n\3\13\3\13\3\f\3\f\3\r\3\r\3\r\3"+
-		"\r\3\r\5\rI\n\r\3\r\2\2\16\2\4\6\b\n\f\16\20\22\24\26\30\2\2\2I\2\35\3"+
-		"\2\2\2\4$\3\2\2\2\6)\3\2\2\2\b,\3\2\2\2\n\60\3\2\2\2\f\62\3\2\2\2\169"+
-		"\3\2\2\2\20;\3\2\2\2\22=\3\2\2\2\24?\3\2\2\2\26A\3\2\2\2\30H\3\2\2\2\32"+
-		"\34\5\4\3\2\33\32\3\2\2\2\34\37\3\2\2\2\35\33\3\2\2\2\35\36\3\2\2\2\36"+
-		" \3\2\2\2\37\35\3\2\2\2 !\7\2\2\3!\3\3\2\2\2\"%\5\16\b\2#%\5\b\5\2$\""+
-		"\3\2\2\2$#\3\2\2\2%\5\3\2\2\2&(\5\4\3\2\'&\3\2\2\2(+\3\2\2\2)\'\3\2\2"+
-		"\2)*\3\2\2\2*\7\3\2\2\2+)\3\2\2\2,-\7\3\2\2-.\5\6\4\2./\7\4\2\2/\t\3\2"+
-		"\2\2\60\61\7\t\2\2\61\13\3\2\2\2\62\63\7\5\2\2\63\r\3\2\2\2\64:\5\20\t"+
-		"\2\65:\5\30\r\2\66:\5\f\7\2\67:\7\6\2\28:\5\n\6\29\64\3\2\2\29\65\3\2"+
-		"\2\29\66\3\2\2\29\67\3\2\2\298\3\2\2\2:\17\3\2\2\2;<\7\b\2\2<\21\3\2\2"+
-		"\2=>\7\13\2\2>\23\3\2\2\2?@\7\f\2\2@\25\3\2\2\2AB\7\16\2\2B\27\3\2\2\2"+
-		"CI\7\7\2\2DI\5\22\n\2EI\5\24\13\2FI\5\26\f\2GI\7\r\2\2HC\3\2\2\2HD\3\2"+
-		"\2\2HE\3\2\2\2HF\3\2\2\2HG\3\2\2\2I\31\3\2\2\2\7\35$)9H";
+		"\f\t\f\4\r\t\r\4\16\t\16\3\2\7\2\36\n\2\f\2\16\2!\13\2\3\2\3\2\3\3\3\3"+
+		"\5\3\'\n\3\3\4\7\4*\n\4\f\4\16\4-\13\4\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6"+
+		"\3\6\5\68\n\6\3\7\3\7\3\b\3\b\3\t\3\t\3\n\3\n\3\13\3\13\3\f\3\f\3\r\3"+
+		"\r\3\16\3\16\3\16\3\16\3\16\5\16M\n\16\3\16\2\2\17\2\4\6\b\n\f\16\20\22"+
+		"\24\26\30\32\2\2\2L\2\37\3\2\2\2\4&\3\2\2\2\6+\3\2\2\2\b.\3\2\2\2\n\67"+
+		"\3\2\2\2\f9\3\2\2\2\16;\3\2\2\2\20=\3\2\2\2\22?\3\2\2\2\24A\3\2\2\2\26"+
+		"C\3\2\2\2\30E\3\2\2\2\32L\3\2\2\2\34\36\5\4\3\2\35\34\3\2\2\2\36!\3\2"+
+		"\2\2\37\35\3\2\2\2\37 \3\2\2\2 \"\3\2\2\2!\37\3\2\2\2\"#\7\2\2\3#\3\3"+
+		"\2\2\2$\'\5\n\6\2%\'\5\b\5\2&$\3\2\2\2&%\3\2\2\2\'\5\3\2\2\2(*\5\4\3\2"+
+		")(\3\2\2\2*-\3\2\2\2+)\3\2\2\2+,\3\2\2\2,\7\3\2\2\2-+\3\2\2\2./\7\3\2"+
+		"\2/\60\5\6\4\2\60\61\7\4\2\2\61\t\3\2\2\2\628\5\f\7\2\638\5\32\16\2\64"+
+		"8\5\16\b\2\658\5\26\f\2\668\5\30\r\2\67\62\3\2\2\2\67\63\3\2\2\2\67\64"+
+		"\3\2\2\2\67\65\3\2\2\2\67\66\3\2\2\28\13\3\2\2\29:\7\b\2\2:\r\3\2\2\2"+
+		";<\7\5\2\2<\17\3\2\2\2=>\7\13\2\2>\21\3\2\2\2?@\7\f\2\2@\23\3\2\2\2AB"+
+		"\7\16\2\2B\25\3\2\2\2CD\7\6\2\2D\27\3\2\2\2EF\7\t\2\2F\31\3\2\2\2GM\7"+
+		"\7\2\2HM\5\20\t\2IM\5\22\n\2JM\5\24\13\2KM\7\r\2\2LG\3\2\2\2LH\3\2\2\2"+
+		"LI\3\2\2\2LJ\3\2\2\2LK\3\2\2\2M\33\3\2\2\2\7\37&+\67L";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

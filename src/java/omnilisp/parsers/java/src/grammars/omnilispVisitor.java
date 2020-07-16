@@ -35,18 +35,6 @@ public interface omnilispVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitList(omnilispParser.ListContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link omnilispParser#symbol}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitSymbol(omnilispParser.SymbolContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link omnilispParser#nil}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNil(omnilispParser.NilContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link omnilispParser#literal}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -58,6 +46,12 @@ public interface omnilispVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitString(omnilispParser.StringContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link omnilispParser#nil}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitNil(omnilispParser.NilContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link omnilispParser#hex}.
 	 * @param ctx the parse tree
@@ -76,6 +70,18 @@ public interface omnilispVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitBign(omnilispParser.BignContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link omnilispParser#bool}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBool(omnilispParser.BoolContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link omnilispParser#symbol}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSymbol(omnilispParser.SymbolContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link omnilispParser#number}.
 	 * @param ctx the parse tree

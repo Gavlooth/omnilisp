@@ -17,7 +17,7 @@ public class omnilispLexer extends Lexer {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, BOOLEAN=4, FLOAT=5, STRING=6, SYMBOL=7, TRASH=8, 
+		T__0=1, T__1=2, NIL=3, BOOLEAN=4, FLOAT=5, STRING=6, SYMBOL=7, TRASH=8, 
 		HEX=9, BIN=10, LONG=11, BIGN=12;
 	public static String[] channelNames = {
 		"DEFAULT_TOKEN_CHANNEL", "HIDDEN"
@@ -29,7 +29,7 @@ public class omnilispLexer extends Lexer {
 
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"T__0", "T__1", "T__2", "BOOLEAN", "FLOAT", "STRING", "SYMBOL", "TRASH", 
+			"T__0", "T__1", "NIL", "BOOLEAN", "FLOAT", "STRING", "SYMBOL", "TRASH", 
 			"WS", "NAME", "SYMBOL_HEAD", "SYMBOL_REST", "COMMENT", "FLOAT_TAIL", 
 			"FLOAT_DECIMAL", "FLOAT_EXP", "HEXD", "HEX", "BIN", "LONG", "BIGN"
 		};
@@ -44,7 +44,7 @@ public class omnilispLexer extends Lexer {
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, "BOOLEAN", "FLOAT", "STRING", "SYMBOL", "TRASH", 
+			null, null, null, "NIL", "BOOLEAN", "FLOAT", "STRING", "SYMBOL", "TRASH", 
 			"HEX", "BIN", "LONG", "BIGN"
 		};
 	}

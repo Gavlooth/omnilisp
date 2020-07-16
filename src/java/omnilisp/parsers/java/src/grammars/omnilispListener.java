@@ -48,26 +48,6 @@ public interface omnilispListener extends ParseTreeListener {
 	 */
 	void exitList(omnilispParser.ListContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link omnilispParser#symbol}.
-	 * @param ctx the parse tree
-	 */
-	void enterSymbol(omnilispParser.SymbolContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link omnilispParser#symbol}.
-	 * @param ctx the parse tree
-	 */
-	void exitSymbol(omnilispParser.SymbolContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link omnilispParser#nil}.
-	 * @param ctx the parse tree
-	 */
-	void enterNil(omnilispParser.NilContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link omnilispParser#nil}.
-	 * @param ctx the parse tree
-	 */
-	void exitNil(omnilispParser.NilContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link omnilispParser#literal}.
 	 * @param ctx the parse tree
 	 */
@@ -87,6 +67,16 @@ public interface omnilispListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitString(omnilispParser.StringContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link omnilispParser#nil}.
+	 * @param ctx the parse tree
+	 */
+	void enterNil(omnilispParser.NilContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link omnilispParser#nil}.
+	 * @param ctx the parse tree
+	 */
+	void exitNil(omnilispParser.NilContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link omnilispParser#hex}.
 	 * @param ctx the parse tree
@@ -117,6 +107,26 @@ public interface omnilispListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitBign(omnilispParser.BignContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link omnilispParser#bool}.
+	 * @param ctx the parse tree
+	 */
+	void enterBool(omnilispParser.BoolContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link omnilispParser#bool}.
+	 * @param ctx the parse tree
+	 */
+	void exitBool(omnilispParser.BoolContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link omnilispParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void enterSymbol(omnilispParser.SymbolContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link omnilispParser#symbol}.
+	 * @param ctx the parse tree
+	 */
+	void exitSymbol(omnilispParser.SymbolContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link omnilispParser#number}.
 	 * @param ctx the parse tree

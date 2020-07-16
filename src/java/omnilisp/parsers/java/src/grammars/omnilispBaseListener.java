@@ -64,30 +64,6 @@ public class omnilispBaseListener implements omnilispListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSymbol(omnilispParser.SymbolContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitSymbol(omnilispParser.SymbolContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterNil(omnilispParser.NilContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitNil(omnilispParser.NilContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterLiteral(omnilispParser.LiteralContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -107,6 +83,18 @@ public class omnilispBaseListener implements omnilispListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitString(omnilispParser.StringContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterNil(omnilispParser.NilContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitNil(omnilispParser.NilContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -143,6 +131,30 @@ public class omnilispBaseListener implements omnilispListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitBign(omnilispParser.BignContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBool(omnilispParser.BoolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBool(omnilispParser.BoolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSymbol(omnilispParser.SymbolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSymbol(omnilispParser.SymbolContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

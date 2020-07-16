@@ -1,6 +1,5 @@
 grammar omnilisp;
 
-
 file: form * EOF;
 
 form: literal
@@ -13,17 +12,32 @@ forms: form* ;
 list: '(' forms ')' ;
 
 
-symbol:SYMBOL;
-nil: 'nil';
-
 literal
     : string
     | number
     | nil
-    | BOOLEAN
+    | bool
     | symbol
     ;
 
+
+string: STRING;
+nil:NIL;
+hex: HEX;
+bin: BIN;
+bign: BIGN;
+bool:BOOLEAN;
+symbol:SYMBOL;
+number
+    : FLOAT
+    | hex
+    | bin
+    | bign
+    | LONG
+    ;
+
+
+NIL: 'nil';
 
 BOOLEAN : 'true' | 'false' ;
 
@@ -33,25 +47,6 @@ FLOAT
     | '-'? 'NaN'
     ;
 
-
-
-string: STRING;
-hex: HEX;
-bin: BIN;
-bign: BIGN;
-number
-    : FLOAT
-    | hex
-    | bin
-    | bign
-    | LONG
-    ;
-
-/* character */
-/*     : named_char */
-/*     | u_hex_quad */
-/*     | any_char */
-/*     ; */
 
 STRING : '"' ( ~'"' | '\\' '"' )* '"' ;
 

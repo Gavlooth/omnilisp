@@ -17,7 +17,7 @@ token symbolic names:
 null
 null
 null
-null
+NIL
 BOOLEAN
 FLOAT
 STRING
@@ -31,7 +31,7 @@ BIGN
 rule names:
 T__0
 T__1
-T__2
+NIL
 BOOLEAN
 FLOAT
 STRING
