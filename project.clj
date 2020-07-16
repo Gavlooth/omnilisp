@@ -18,7 +18,8 @@
                    :dependencies [[org.clojure/tools.namespace "0.2.11"]]
                    :plugins [[cider/cider-nrepl "0.25.2"]]              
                    :repl-options {:init-ns user}
-                   :init (println "here we are in" *ns*)}
+                   :init (println "here we are in" *ns*)
+                   :aot :all}
              :uberjar {:main omnilisp.core
                        :aot :all}})
 

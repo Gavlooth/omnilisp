@@ -1,6 +1,7 @@
-grammar omnilisp;
+grammar Omnilisp;
 
 file: form * EOF;
+
 
 form: literal
 | list
@@ -10,18 +11,17 @@ form: literal
 special_form:SPECIAL_FORM  ;
 
 
-FORMS: FORM* ;
+forms: form* ;
 
-LIST: '(' FORMS ')' ;
+list: '(' forms ')' ;
 
 symbol:SYMBOL;
 /* ~(MATCH SYMBOL+); */
-NIL: 'NIL';
 
-LITERAL
-: STRING
-| NUMBER
-| NIL
+literal
+: string
+| number
+| nil
 | BOOLEAN
 | SYMBOL
 ;
@@ -34,10 +34,9 @@ FLOAT
 | '-'? 'NAN'
 ;
 
-STRING: STRING;
-HEX: HEX;
-bin: BIN;
-bign: BIGN;
+
+nil: 'NIL';
+
 number
 : FLOAT
 | hex
@@ -45,6 +44,13 @@ number
 | bign
 | LONG
 ;
+
+
+string: STRING;
+bin: BIN;
+bign: BIGN;
+
+hex: HEX;
 
 STRING : '"' ( ~'"' | '\\' '"' )* '"' ;
 
