@@ -1,32 +1,36 @@
 grammar Omnilisp;
 
-file: form * EOF;
+
+file : form* ;
+
+form : '(' form* ')'
+    | '\'' form
+    | number
+    | BOOLEAN
+    | STRING
+    | SYMBOL
+    ;
 
 
-form: literal
-| list
-| special_form
+
+number
+: FLOAT
+| HEX
+| INT
+| BIN
+| BIGN
+| LONG
 ;
 
-special_form:SPECIAL_FORM  ;
 
+INT : [0-9]+ ;
+BOOLEAN : ('#f'|'#t') ;
+STRING : '"' ( ~'"' | '\\' '"')* '"' ;
+SYMBOL : ~('#'|'"'|'\''|[()]|[ \t\r\n]) ~('"'|'\''|[()]|[ \t\r\n])* ;
 
-forms: form* ;
+COMMENT : ';' .*? '\n' -> skip ;
+WS : [ \t\r\n] -> skip ;
 
-list: '(' forms ')' ;
-
-symbol:SYMBOL;
-/* ~(MATCH SYMBOL+); */
-
-literal
-: string
-| number
-| nil
-| BOOLEAN
-| SYMBOL
-;
-
-BOOLEAN : 'TRUE' | 'FALSE' ;
 
 FLOAT
 : '-'? [0-9]+ FLOAT_TAIL
@@ -35,58 +39,6 @@ FLOAT
 ;
 
 
-nil: 'NIL';
-
-number
-: FLOAT
-| hex
-| bin
-| bign
-| LONG
-;
-
-
-string: STRING;
-bin: BIN;
-bign: BIGN;
-
-hex: HEX;
-
-STRING : '"' ( ~'"' | '\\' '"' )* '"' ;
-
-SYMBOL
-: '.'
-| '/'
-| NAME
-;
-
-
-TRASH
-: ( WS | COMMENT ) -> channel(HIDDEN)
-;
-fragment
-WS : [ \n\r\t,] ;
-
-fragment
-NAME: SYMBOL_HEAD SYMBOL_REST* (':' SYMBOL_REST+)* ;
-
-fragment
-SYMBOL_HEAD
-: ~('0' .. '9'
-    | '^' | '`' | '\'' | '"' | '#' | '~' | '@' | ':' | '/' | '%' | '(' | ')' | '[' | ']' | '{' | '}' // FIXME: could be one group
-    | [ \n\r\t,] // FIXME: could be WS
-   )
-;
-
-fragment
-SYMBOL_REST
-: SYMBOL_HEAD
-| '0'..'9'
-| '.'
-;
-
-fragment
-COMMENT: ';' ~[\r\n]* ;
 
 fragment
 FLOAT_TAIL
@@ -111,11 +63,3 @@ BIN: '0' [bB] [10]+ ;
 LONG: '-'? [0-9]+[lL]?;
 BIGN: '-'? [0-9]+[nN];
 
-fragment
-MATCH: 'match' ;
-DEFINE: 'define';
-
-
-SPECIAL_FORM: MATCH
-| DEFINE
-;
