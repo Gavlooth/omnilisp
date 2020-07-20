@@ -11,11 +11,11 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface OmnilispVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link OmnilispParser#file}.
+	 * Visit a parse tree produced by {@link OmnilispParser#forms}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitFile(OmnilispParser.FileContext ctx);
+	T visitForms(OmnilispParser.FormsContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link OmnilispParser#form}.
 	 * @param ctx the parse tree

@@ -10,9 +10,14 @@
                  [org.clojure/tools.logging "1.1.0"]
                  [org.apache.logging.log4j/log4j-core "2.13.0"]
                  [org.apache.logging.log4j/log4j-api "2.13.0"]
-                 [org.apache.logging.log4j/log4j-jcl "2.13.0"]]
+                 [org.apache.logging.log4j/log4j-jcl "2.13.0"]
+                 [commons-codec/commons-codec "1.9"]
+                 [com.rpl/proxy-plus "0.0.1"]
+                 #_[org.apache.commons/commons-lang3 "3.10"]
+                 [org.clojure/core.match "1.0.0"]]
   :source-paths ["src/clj"]
   :java-source-paths ["src/java/"]
+  :jvm-opts ["-Dclojure.tools.logging.factory=clojure.tools.logging.impl/log4j2-factory"]
   :global-vars {*warn-on-reflection* true}
   :profiles {:dev {:source-paths ["src" "dev"]
                    :dependencies [[org.clojure/tools.namespace "0.2.11"]]
@@ -22,6 +27,7 @@
                    :aot :all}
              :uberjar {:main omnilisp.core
                        :aot :all}})
+
 
 
 

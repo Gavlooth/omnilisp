@@ -20,10 +20,10 @@ public class OmnilispParser extends Parser {
 		T__0=1, T__1=2, T__2=3, INT=4, BOOLEAN=5, STRING=6, SYMBOL=7, COMMENT=8, 
 		WS=9, FLOAT=10, HEX=11, BIN=12, LONG=13, BIGN=14;
 	public static final int
-		RULE_file = 0, RULE_form = 1, RULE_number = 2;
+		RULE_forms = 0, RULE_form = 1, RULE_number = 2;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"file", "form", "number"
+			"forms", "form", "number"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -91,35 +91,35 @@ public class OmnilispParser extends Parser {
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
-	public static class FileContext extends ParserRuleContext {
+	public static class FormsContext extends ParserRuleContext {
 		public List<FormContext> form() {
 			return getRuleContexts(FormContext.class);
 		}
 		public FormContext form(int i) {
 			return getRuleContext(FormContext.class,i);
 		}
-		public FileContext(ParserRuleContext parent, int invokingState) {
+		public FormsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_file; }
+		@Override public int getRuleIndex() { return RULE_forms; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof OmnilispListener ) ((OmnilispListener)listener).enterFile(this);
+			if ( listener instanceof OmnilispListener ) ((OmnilispListener)listener).enterForms(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof OmnilispListener ) ((OmnilispListener)listener).exitFile(this);
+			if ( listener instanceof OmnilispListener ) ((OmnilispListener)listener).exitForms(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof OmnilispVisitor ) return ((OmnilispVisitor<? extends T>)visitor).visitFile(this);
+			if ( visitor instanceof OmnilispVisitor ) return ((OmnilispVisitor<? extends T>)visitor).visitForms(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final FileContext file() throws RecognitionException {
-		FileContext _localctx = new FileContext(_ctx, getState());
-		enterRule(_localctx, 0, RULE_file);
+	public final FormsContext forms() throws RecognitionException {
+		FormsContext _localctx = new FormsContext(_ctx, getState());
+		enterRule(_localctx, 0, RULE_forms);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);

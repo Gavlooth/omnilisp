@@ -1,7 +1,7 @@
 grammar Omnilisp;
 
 
-file : form* ;
+forms : form* ;
 
 form : '(' form* ')'
     | '\'' form
