@@ -1,6 +1,5 @@
 #!/bin/env fish
 
-java -jar /usr/local/lib/antlr-4.8-complete.jar resources/grammars/Omnilisp.g4 \
-      -o src/java/omnilisp/parsers  \
-      -package Omnilisp.parsers \
+java -jar /usr/local/lib/antlr-4.8-complete.jar  src/main/antlr4/omnilisp/Omnilisp.g4 \
+      -package omnilisp.grammar \
       -visitor -message-format gnu
